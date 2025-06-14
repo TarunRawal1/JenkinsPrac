@@ -31,6 +31,7 @@ pipeline {
             test -f build/index.html || echo "index.html not found"
             npm ci
             npm test
+            ls -la
             '''
         }
         }

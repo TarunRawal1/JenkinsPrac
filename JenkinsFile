@@ -19,5 +19,11 @@ pipeline {
                 '''
             }
         }
+        stage("test"){
+            sh '''
+            test -f index.html || echo "index.html not found"
+            npm test
+            '''
+        }
     }
 }

@@ -20,10 +20,12 @@ pipeline {
             }
         }
         stage("test"){
+            steps {
             sh '''
             test -f index.html || echo "index.html not found"
             npm test
             '''
+        }
         }
     }
 }

@@ -1,9 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-import '@testing-library/jest-dom';
+import { test, expect } from '@playwright/test';
 
-test('renders welcome message and prompt', () => {
-  render(<App />);
-  expect(screen.getByText(/Welcome to the Store/i)).toBeInTheDocument();
-  expect(screen.getByText(/What are you looking for\?/i)).toBeInTheDocument();
+test('renders welcome message and prompt', async ({ page }) => {
+  // Replace with your actual running app URL
+  await page.goto('http://localhost:3000');
+
+  // Check for the welcome message
+  await expect(page.getByText(/Welcome to the Store/i)).toBeVisible();
+
+  // Check for the prompt
+  await expect(page.getByText(/What are you looking for\?/i)).toBeVisible();
 });
